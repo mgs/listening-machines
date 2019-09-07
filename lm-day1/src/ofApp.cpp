@@ -4,13 +4,14 @@
 void ofApp::setup(){
   // This is just storing the background color in a variable
   backgroundColor = ofColor(0,0,0);
-  // this is using that variable to clear the sketch window
+  // let's now use that variable to clear the sketch window so it doesn't flicker on startup
   ofClear(backgroundColor);
-  // lock the frame rate to the screen's refresh rate (usually 60FPS)
+  // Vertical Sync locks the frame rate to the screen's refresh rate (usually 60FPS)
+  // this helps avoid image tearing artifacts and is usually a good default
   ofSetVerticalSync(true);
   
-  // This tells OF to automatically clear the background between frames
-  // it's useful in situations where you want to manually clear the screen
+  // This tells OF to automatically clear the background between frames turning it off is
+  // useful in situations where you want to manually clear the screen
   ofSetBackgroundAuto(true);
   
   // This sets the title in the window's titlebar
@@ -22,9 +23,11 @@ void ofApp::setup(){
   // We initialize the vectors (resizable arrays) here.
   //
   // if we want to separately store left channel data
-  //leftBuffer.assign(frameSize, 0.0);
+  // leftBuffer.assign(frameSize, 0.0);
+  // leftThreadBuffer.assign(frameSize, 0.0);
   // if we want to separately store right channel data
-  //rightBuffer.assign(frameSize, 0.0);
+  // rightBuffer.assign(frameSize, 0.0);
+  // rightThreadBuffer.assign(frameSize, 0.0);
 
   // we create two buffers for storing our audio frames, one is for using from
   // our sketch while the other is for use inside the audioIn(..) event.
