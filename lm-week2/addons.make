@@ -1,0 +1,5 @@
+ofxGui
+ofxLiveApp
+ofxMLTK
+ofxSyphon
+ofxTimeMeasurements
