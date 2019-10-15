@@ -1,6 +1,7 @@
 #pragma once
 
 #include "ofMain.h"
+#include "ofxGui.h"
 #include "ofxMLTK.h"
 
 class ofApp: public ofBaseApp{
@@ -35,6 +36,10 @@ class ofApp: public ofBaseApp{
     "HPCP",
     "RMS",
   };
+
+  bool showGui = true;
+  ofxPanel gui;
+  ofParameter<float> multiplier;
 
   void audioIn(ofSoundBuffer &inBuffer);
   

@@ -14,7 +14,10 @@ void ofApp::setup(){
   int frameSize = 2048;
   int hopSize = frameSize/2;
   int numberOfBuffers = 1;
-  
+
+  gui.setup("Press 'd' to toggle");
+  gui.add(multiplier.set("Multiplier", 1.0, 0.1, 100.0));
+
   soundStream.setup(numberOfOutputChannels, numberOfInputChannels, sampleRate, frameSize, numberOfBuffers);
 
   // Setup MLTK using frameSize, sampleRate, and hopSize from above
@@ -49,7 +52,7 @@ void ofApp::update(){
 void ofApp::draw(){
   ofBackground(0,0,0);
   ofFill();
-  ofSetColor(0,0,0);
+  ofSetColor(255);
 
   const Real &rms = mltk.getValue("RMS");
 
@@ -121,6 +124,10 @@ void ofApp::draw(){
                           0.0,
                           -ofGetHeight()));
   }
+
+  if(showGui){
+    gui.draw();
+  }
 }
 
 void ofApp::audioIn(ofSoundBuffer &inBuffer){
@@ -131,7 +138,11 @@ void ofApp::audioIn(ofSoundBuffer &inBuffer){
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
-
+  switch(key){
+    case 'd':
+      showGui = !showGui;
+      break;
+  }
 }
 
 //--------------------------------------------------------------
